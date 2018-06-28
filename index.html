@@ -1,48 +1,134 @@
-<!doctype <!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Game</title>
+    <meta charset="utf-8">
+    <title>Memory Game</title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah|Permanent+Marker">
+    <link rel="stylesheet" href="css/app.css">
+
+	<style>
+body {
+background: url(./geometry2.png);
+}
+</style>
+
+
+
 </head>
+
 <body>
-    <div class="body">
-            <div class="head">
-                <span>Memory Game </span>
-                <br ><br ><br >                
-                <span class="fa fa-star" id="gold"></span>
-                <span class="fa fa-star" id="gold"></span>
-                <span class="fa fa-star" id="gold"></span>
-                <span> 0 </span>Moves &nbsp;
-                <span></span>
-                <span></span>
-                <span></span>
-                <span></span>
-                <span class="fa fa-refresh fa-spin"></span>
+
+    <div class="container">
+        <header>
+            <h1>Memory Game</h1>
+        </header>
+
+        <section class="score-panel">
+            <ul class="stars">
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+                <li>
+                    <i class="fa fa-star"></i>
+                </li>
+            </ul>
+
+            <span id="checkMoves"class="moves">0</span> Move(s)
+                &nbsp;&nbsp;&nbsp;
+            <div class="timers" >
+                <div id="mins"> 0 </div> Min(s) &nbsp;
+                <div id="secs"> 0 </div> Sec(s) &nbsp;
             </div>
-        <div class="container">
-            <div class="game_area">
-                <div class="orange fa fa-anchor" id="anchor"></div>
-                <div class="aqua fa fa-cube" id="anchor"></div>
-                <div class="gold fa fa-bicycle" id="anchor"></div>
-                <div class="peach fa fa-bolt" id="anchor"></div>
-                <div class="green fa fa-cloud" id="anchor"></div>
-                <div class="gold fa fa-bicycle" id="anchor"></div>
-                <div class="orange fa fa-anchor" id="anchor"></div>
-                <div class="green fa fa-cloud" id="anchor"></div>
-                <div class="red fa fa-bug" id="anchor"></div>
-                <div class="purple fa fa-bed" id="anchor"></div>
-                <div class="navy fa fa-behance" id="anchor"></div>
-                <div class="red fa fa-bug" id="anchor"></div>
-                <div class="peach fa fa-bolt" id="anchor"></div>
-                <div class="purple fa fa-bed" id="anchor"></div>
-                <div class="navy fa fa-behance" id="anchor"></div>
-                <div class="aqua fa fa-cube" id="anchor"></div>
+
+            <div class="restart" onclick="playAgain()">
+                <i id="spin" class="fa fa-repeat "></i>
+            </div>
+        </section>
+
+        <ul class="deck" id="card-deck">
+            <li class="card" type="diamond">
+                <i class="fa fa-diamond"></i>
+            </li>
+            <li class="card" type="plane">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            <li class="card" type="anchor">
+                <i class="fa fa-anchor"></i>
+            </li>
+            <li class="card" type="bolt">
+                <i class="fa fa-bolt"></i>
+            </li>
+            <li class="card" type="cube">
+                <i class="fa fa-cube"></i>
+            </li>
+            <li class="card" type="anchor">
+                <i class="fa fa-anchor"></i>
+            </li>
+            <li class="card" type="leaf">
+                <i class="fa fa-leaf"></i>
+            </li>
+            <li class="card" type="bicycle">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            <li class="card" type="diamond">
+                <i class="fa fa-diamond"></i>
+            </li>
+            <li class="card" type="bomb">
+                <i class="fa fa-bomb"></i>
+            </li>
+            <li class="card" type="leaf">
+                <i class="fa fa-leaf"></i>
+            </li>
+            <li class="card" type="bomb">
+                <i class="fa fa-bomb"></i>
+            </li>
+            <li class="card" type="bolt">
+                <i class="fa fa-bolt"></i>
+            </li>
+            <li class="card" type="bicycle">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            <li class="card" type="plane">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            <li class="card" type="cube">
+                <i class="fa fa-cube"></i>
+            </li>
+        </ul>
+
+        <div id="popup1" class="overlay">
+            <div class="popup">
+                <h2>Congratulations 🎉</h2>
+                <a class="close" id="close-icon" href="" onclick="closeCongrats()">×</a>
+                <div class="content-1">
+                    Congratulations you've won 🎉🎉
+                </div>
+                <div class="content-2">
+                    <p>You made
+                        <span id=finalMove> 0 </span> move(s) </p>
+                    <p>in
+                        <span id=totalTime> </span>
+                    </p>
+                    <p>Rating:
+                        <span id=starRating></span>
+                    </p>
+                </div>
+                <button id="play-again" onclick="playAgain()">
+                    Play again 😄</a>
+                </button>
             </div>
         </div>
+
     </div>
+    <script src="js/script.js"></script>
 </body>
+
 </html>
